@@ -6,7 +6,7 @@ import com.fresher.demo.entity.Employee;
 
 public interface EmployeeServiceInterface {
 
-	 Employee addEmployee(Employee employee);
+	Employee addEmployee(Employee employee);
 
 	List<Employee> getAllEmployees();
 

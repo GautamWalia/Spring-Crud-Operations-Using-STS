@@ -32,105 +32,39 @@ public class EmployeeController
 	@PostMapping("/save")
 	public ResponseEntity<?> addEmployee(@RequestBody Employee emp)
 	{
-		try
-		{
 			Employee empSaved= empSerInterface.addEmployee(emp);
 			return new ResponseEntity<Employee>(empSaved, HttpStatus.CREATED);
-		}
-		catch(BusinessException e) 
-		{
-			ControllerException ce= new ControllerException(e.getErrorCode(),e.getErrorMessage());
-			return new ResponseEntity<ControllerException>(ce, HttpStatus.BAD_REQUEST);
-		}
-		catch(Exception e) 
-		{
-			ControllerException ce= new ControllerException("609", "Something went worng in controller");
-			return new ResponseEntity<ControllerException>(ce, HttpStatus.NOT_FOUND);
-		}
-		//return null;
 	}
 	
 	@GetMapping("/all")
 	public  ResponseEntity<?> getAllEmployees()
 	{
-		//System.out.print("getting employees");
-		try
-		{
 			List<Employee> listOfallEmp= empSerInterface.getAllEmployees();
 			return new ResponseEntity<List<Employee>> (listOfallEmp, HttpStatus.OK);
-		}
-		catch(BusinessException e) 
-		{
-			ControllerException ce= new ControllerException(e.getErrorCode(),e.getErrorMessage());
-			return new ResponseEntity<ControllerException>(ce, HttpStatus.BAD_REQUEST);
-		}
-		catch(Exception e) 
-		{
-			ControllerException ce= new ControllerException("610", "Something went worng in controller");
-			return new ResponseEntity<ControllerException>(ce, HttpStatus.NOT_FOUND);
-		}
 	}
 	
 	@GetMapping("/emp/{empID}")
 	public ResponseEntity<?> getEmpById(@PathVariable("empID") int id) 
 	{
-		try
-		{
 			Employee empReterived= empSerInterface.getEmpById(id);
 			return new ResponseEntity<Employee>(empReterived, HttpStatus.OK);
-		}
-		catch(BusinessException e) 
-		{
-			ControllerException ce= new ControllerException(e.getErrorCode(),e.getErrorMessage());
-			return new ResponseEntity<ControllerException>(ce, HttpStatus.BAD_REQUEST);
-		}
-		catch(Exception e) 
-		{
-			ControllerException ce= new ControllerException("611", "Something went worng in controller");
-			return new ResponseEntity<ControllerException>(ce, HttpStatus.NOT_FOUND);
-		}
 	}
 	
 	@DeleteMapping("/delete/{empID}")
 	public ResponseEntity<?> delEmpById(@PathVariable("empID") int id)
 	{
-		
-		try
-		{
-			 empSerInterface.delEmpById(id);
+			empSerInterface.delEmpById(id);
 			return new ResponseEntity<>("emp Deleted", HttpStatus.OK);
-		}
-		catch(BusinessException e) 
-		{
-			ControllerException ce= new ControllerException(e.getErrorCode(),e.getErrorMessage());
-			return new ResponseEntity<ControllerException>(ce, HttpStatus.BAD_REQUEST);
-		}
-		catch(Exception e) 
-		{
-			ControllerException ce= new ControllerException("612", "Something went worng in controller");
-			return new ResponseEntity<ControllerException>(ce, HttpStatus.NO_CONTENT);
-		}
+		
 	} 
 		
 	@PutMapping("/update")
 	public ResponseEntity<?> updateEmployee(@RequestBody Employee emp)
 	{
-		try
-		{
+		
 			Employee empSaved= empSerInterface.addEmployee(emp);
 			return new ResponseEntity<Employee>(empSaved, HttpStatus.CREATED);
-		}
-		catch(BusinessException e) 
-		{
-			ControllerException ce= new ControllerException(e.getErrorCode(),e.getErrorMessage());
-			return new ResponseEntity<ControllerException>(ce, HttpStatus.BAD_REQUEST);
-		}
-		catch(Exception e) 
-		{
-			ControllerException ce= new ControllerException("613", "Something went worng in controller");
-			return new ResponseEntity<ControllerException>(ce, HttpStatus.NOT_FOUND);
-		}
-		//return null;
+		
 	}
 	
 }

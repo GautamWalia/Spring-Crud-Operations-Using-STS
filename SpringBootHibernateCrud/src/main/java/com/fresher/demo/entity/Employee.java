@@ -6,6 +6,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.lang.NonNull;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,6 +22,7 @@ public class Employee
 	@GeneratedValue(strategy= GenerationType.AUTO)
 	private int id;
 	
+	@NonNull
 	private String name;
 
 	
